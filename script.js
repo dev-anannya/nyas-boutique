@@ -75,3 +75,74 @@ function autoSlide(selector) {
         }
     }, 3000);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    let searchIcon = document.getElementById("search-icon");
+    let searchBox = document.getElementById("search-box");
+
+    // Toggle search box visibility
+    searchIcon.addEventListener("click", function (event) {
+        event.stopPropagation(); // Prevent immediate closing when clicking icon
+        searchBox.style.display = searchBox.style.display === "block" ? "none" : "block";
+    });
+
+    // Hide search box when clicking outside
+    document.addEventListener("click", function (event) {
+        if (!searchBox.contains(event.target) && event.target !== searchIcon) {
+            searchBox.style.display = "none";
+        }
+    });
+
+    // Redirect to cart page
+    document.getElementById("cart-icon").addEventListener("click", function () {
+        window.location.href = "cart.html"; // Update with your cart page link
+    });
+});
+
+// 🌟 Best Seller Carousel Functionality
+
+document.addEventListener("DOMContentLoaded", function () {
+    const track = document.querySelector(".carousel-track");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+    const items = document.querySelectorAll(".carousel-item");
+    const itemWidth = items[0].offsetWidth + 20; // Including gap
+    let index = 0;
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${index * itemWidth}px)`;
+    }
+
+    nextBtn.addEventListener("click", function () {
+        if (index < items.length - 1) {
+            index++;
+        } else {
+            index = 0; // Loop back to start
+        }
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener("click", function () {
+        if (index > 0) {
+            index--;
+        } else {
+            index = items.length - 1; // Loop back to end
+        }
+        updateCarousel();
+    });
+
+    // Swipe support for touchscreens
+    let startX;
+    track.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    track.addEventListener("touchend", (e) => {
+        let endX = e.changedTouches[0].clientX;
+        if (startX > endX + 50) {
+            nextBtn.click(); // Swipe left
+        } else if (startX < endX - 50) {
+            prevBtn.click(); // Swipe right
+        }
+    });
+});

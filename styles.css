@@ -5,138 +5,280 @@
     box-sizing: border-box;
 }
 
-/* 🖼️ Regencycore Banner */
+/* 🌸 Regencycore Navbar */
+.navbar {
+    position: absolute; /* Overlays on banner */
+    top: 0;
+    width: 100%;
+    background: rgba(213, 202, 170, 0.3); /* Soft beige with transparency */
+    padding: 15px 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease-in-out;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar ul li {
+    display: inline-block;
+}
+
+.navbar ul li a {
+    color: #5a3e36; /* Deep warm brown */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 22px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* 🌷 Banner Enhancements */
 .banner {
     position: relative;
     width: 100%;
-    height: 400px;  /* Adjust height as needed */
-    overflow: hidden;
+    height: 100vh; /* Full viewport height */
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-/* Removes any old store name */
-.old-store-name {
-    display: none !important;
+    overflow: hidden;
 }
 
 .banner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.85); /* Darken slightly for contrast */
+    filter: brightness(0.85); /* Slightly dim for contrast */
 }
 
-/* ✨ Beige Overlay */
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(213,202,170,0.3) /* Soft beige */
+    background: rgba(213, 202, 170, 0.3); /* Adjusted for your preference */
 }
 
-/* 🏷️ Store Name */
+/* ✨ Elegant Store Name Styling */
 .store-name {
     position: absolute;
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
-    color: #5a3e36; /* Deep warm brown */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-    background: none; /* No unwanted background */
-    padding: 10px;
+    color: #5a3e36;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-/* 🔗 Improved Navigation Bar */
-.navbar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background:rgba(213,202,170,0.98); /* Elegant gradient */
-    padding: 15px 0;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Ensures it stays above other elements */
-}
-
-/* Centering nav items with spacing */
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* 🌟 Currency & Icon Section */
+.navbar-right {
     display: flex;
-    justify-content: center;
-    gap: 25px;
+    align-items: center;
+    gap: 20px;
 }
 
-/* 🖋️ Navbar Links */
-.navbar ul li {
-    display: inline-block;
-}
-
-.navbar ul li a {
-    color: #5a3e36; 
-    text-decoration: none;
+.currency-selector {
+    font-size: 1rem;
+    color: #5a3e36;
     font-weight: bold;
-    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.currency-selector select {
+    border: none;
+    background: transparent;
+    font-size: 1rem;
     font-family: 'Playfair Display', serif;
-    padding: 10px 15px;
+    color: #5a3e36;
+    cursor: pointer;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-icons i {
+    font-size: 1.5rem;
+    color: #5a3e36;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-icons i:hover {
+    color: #8b5e3b;
+}
+
+/* Search Box Styling */
+.search-box {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 80px; /* Below navbar */
+    right: 30px;
+    background: white;
+    padding: 10px;
     border-radius: 5px;
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ✨ Hover Effect */
-.navbar ul li a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.7);
+.search-box input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
 }
 
+.search-box button {
+    padding: 8px 12px;
+    background: #8b5e3b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
 
-/* 🛍️ Featured Collection */
-.featured {
+/* 🌿 Categories Collection Grid */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3x3 grid for large screens */
+    gap: 20px;
+    padding: 50px;
     text-align: center;
-    margin: 50px 0;
+    max-width: 1200px;
+    margin: auto;
+    /* background: #fdf7f1; */
 }
 
-.featured h2 {
-    font-size: 2rem;
+@media (max-width: 900px) {
+    .categories {
+        grid-template-columns: repeat(2, 1fr); /* 2x3 grid for smaller screens */
+    }
+}
+
+.category-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.category-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.category-item:hover img {
+    transform: scale(1.05);
+}
+
+.category-title {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(213, 202, 170, 0.8);
+    padding: 8px 15px;
     font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5a3e36;
+    border-radius: 5px;
+}
+
+/* 🌟 Best Seller Carousel Styling */
+.best-seller {
+    text-align: center;
+    padding: 50px 0;
+    /* background: #fdf7f1; Soft pastel background */
+}
+
+.best-seller h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
     color: #5a3e36;
     margin-bottom: 20px;
 }
 
-.products {
+.carousel-container {
+    position: relative;
+    max-width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-track {
     display: flex;
-    justify-content: center;
     gap: 20px;
+    transition: transform 0.5s ease-in-out;
 }
 
-.product {
-    background: #f7f1e3;
-    padding: 15px;
+.carousel-item {
+    min-width: 300px;
     border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: white;
+    padding: 15px;
 }
 
-.product img {
-    width: 200px;
-    height: auto;
-    border-radius: 5px;
+.carousel-item img {
+    width: 100%;
+    border-radius: 10px;
 }
 
-.product p {
+.carousel-item p {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
-    margin-top: 10px;
     color: #5a3e36;
+    margin-top: 10px;
 }
 
+/* Arrows */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    color: rgba(90, 62, 54, 0.8);
+    border: none;
+    /* padding: 10px 15px; */
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    transition: background 0.3s ease-in-out;
+}
+
+.carousel-btn:hover {
+    background: white;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
 /* 📌 Footer */
 footer {
     background: #5a3e36;
