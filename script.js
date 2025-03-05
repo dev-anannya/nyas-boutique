@@ -60,3 +60,18 @@ function removeFromCart(index) {
     cart.splice(index, 1);
     updateCart();
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    autoSlide(".best-sellers .carousel");
+    autoSlide(".reviews .carousel");
+});
+
+function autoSlide(selector) {
+    const carousel = document.querySelector(selector);
+    setInterval(() => {
+        carousel.scrollBy({ left: 220, behavior: "smooth" });
+        if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
+            carousel.scrollTo({ left: 0, behavior: "smooth" });
+        }
+    }, 3000);
+}

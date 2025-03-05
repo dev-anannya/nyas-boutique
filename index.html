@@ -3,29 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Porfyro Store</title>
+    <title>Porfyro Boutique</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Porfyro Store</h1>
 
-    <div class="filters">
-        <input type="text" id="search" placeholder="Search products...">
-        <select id="categoryFilter">
-            <option value="">All Categories</option>
-        </select>
-        <select id="sort">
-            <option value="low-high">Price: Low to High</option>
-            <option value="high-low">Price: High to Low</option>
-        </select>
-    </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Collections</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- Regencycore Banner with Store Name -->
+    <section class="banner">
+        <img src="./images/indexbanner.jpg" alt="Fashion Banner">
+        <div class="overlay"></div>  
+        <h1 class="store-name">Porfyro Boutique</h1>
+    </section>
 
-    <div id="products"></div>
 
-    <h2>Cart</h2>
-    <div id="cart"></div>
-    <p id="total">Total: ₹0</p>
+    <!-- Featured Collection Section -->
+    <section class="featured">
+        <h2>Featured Collection</h2>
+        <div class="products">
+            <div class="product">
+                <img src="dress1.jpg" alt="Elegant Dress">
+                <p>Regency Elegance Dress</p>
+            </div>
+            <div class="product">
+                <img src="dress2.jpg" alt="Gown">
+                <p>Victorian Ball Gown</p>
+            </div>
+            <div class="product">
+                <img src="dress3.jpg" alt="Lace Dress">
+                <p>Pastel Lace Ensemble</p>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Porfyro Boutique. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
