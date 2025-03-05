@@ -19,6 +19,8 @@
     justify-content: space-between;
     align-items: center;
     transition: background 0.3s ease-in-out;
+    position: fixed;
+    z-index: 1000;
 }
 
 .navbar ul {
@@ -87,6 +89,7 @@
 }
 
 /* 🌟 Currency & Icon Section */
+
 .navbar-right {
     display: flex;
     align-items: center;
