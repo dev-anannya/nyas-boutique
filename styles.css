@@ -5,13 +5,12 @@
     box-sizing: border-box;
 }
 
-/* 🌸 Regencycore Navbar */
+/*Navbar */
 .navbar {
-    position: absolute; /* Overlays on banner */
+    position: absolute; 
     top: 0;
     width: 100%;
     background: rgb(253, 253, 253);
-    /* background: rgba(213, 202, 170, 0.3); Soft beige with transparency */
     padding: 15px 30px;
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
@@ -35,7 +34,7 @@
 }
 
 .navbar ul li a {
-    color: #5a3e36; /* Deep warm brown */
+    color: #5a3e36;
     text-decoration: none;
     font-weight: bold;
     padding: 12px 22px;
@@ -55,7 +54,7 @@
 }
 
 .navbar-right ul li a {
-    color: #5a3e36; /* Deep warm brown */
+    color: #5a3e36;
     text-decoration: none;
     font-weight: bold;
     padding: 12px 22px;
@@ -70,7 +69,7 @@
 }
 
 
-/* 🌷 Banner Enhancements */
+/* Banner    */
 .banner {
     position: relative;
     width: 100%;
@@ -85,7 +84,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(0.85); /* Slightly dim for contrast */
+    filter: brightness(0.85); 
 }
 
 .overlay {
@@ -94,10 +93,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(213, 202, 170, 0.3); /* Adjusted for your preference */
+    background: rgba(213, 202, 170, 0.3); 
 }
 
-/* ✨ Elegant Store Name Styling */
+/* Store Name*/
 .store-name {
     position: absolute;
     font-family: 'Playfair Display', serif;
@@ -110,7 +109,7 @@
     transform: translate(-50%, -50%);
 }
 
-/* 🌟 Currency & Icon Section */
+/* Currency & Icons */
 
 .navbar-right {
     display: flex;
@@ -152,7 +151,7 @@
     color: #8b5e3b;
 }
 
-/* Search Bar Styling */
+/* Search Bar */
 .search-bar {
     display: none;
     position: fixed;
@@ -200,7 +199,7 @@
     color: #5a3e36;
 }
 
-/* Dimmed Overlay */
+/*Overlay */
 .dimmed-overlay {
     display: none;
     position: fixed;
@@ -216,7 +215,7 @@
     display: block;
 }
 
-/* 🌿 Categories Collection Grid */
+/*Categories Collection Grid */
 .categories {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3x3 grid for large screens */
@@ -225,7 +224,7 @@
     text-align: center;
     max-width: 1200px;
     margin: auto;
-    /* background: #fdf7f1; */
+  
 }
 
 @media (max-width: 900px) {
@@ -265,82 +264,6 @@
     font-weight: bold;
     color: #5a3e36;
     border-radius: 5px;
-}
-
-/* 🌟 Best Seller Carousel Styling */
-.best-seller {
-    text-align: center;
-    padding: 50px 0;
-    /* background: #fdf7f1; Soft pastel background */
-}
-
-.best-seller h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: #5a3e36;
-    margin-bottom: 20px;
-}
-
-.carousel-container {
-    position: relative;
-    max-width: 90%;
-    margin: auto;
-    overflow: hidden;
-}
-
-.carousel-track {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-    min-width: 300px;
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background: white;
-    padding: 15px;
-}
-
-.carousel-item img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.carousel-item p {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: #5a3e36;
-    margin-top: 10px;
-}
-
-/* Arrows */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: white;
-    color: rgba(90, 62, 54, 0.8);
-    border: none;
-    /* padding: 10px 15px; */
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    transition: background 0.3s ease-in-out;
-}
-
-.carousel-btn:hover {
-    background: white;
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
 }
 
 /* Product Card Styles */
@@ -420,7 +343,7 @@
     color: white;
 }
 
-/* 📌 Footer */
+/* Footer */
 footer {
     background: #5a3e36;
     color: white;
@@ -450,7 +373,7 @@ footer {
 }
 
 /* Form Container */
-/* Background Image for Login and Signup Pages */
+
 body.login-signup {
     background: url('images/indexbanner.jpg') no-repeat center center fixed;
     background-size: cover;

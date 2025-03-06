@@ -1,4 +1,4 @@
-// api/search.php
+
 <?php
 require 'db.php';
 

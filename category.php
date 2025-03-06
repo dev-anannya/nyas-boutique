@@ -23,10 +23,9 @@
             <!-- Currency Selector -->
             <div class="currency-selector">
                 <select>
-                    <option>USD $ | United States</option>
+                    
                     <option>INR ₹ | India</option>
-                    <option>EUR € | Europe</option>
-                    <option>GBP £ | United Kingdom</option>
+                    
                 </select>
             </div>
     
