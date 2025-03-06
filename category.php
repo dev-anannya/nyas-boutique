@@ -1,3 +1,4 @@
+<!-- filepath: c:\Users\anannya\porfyro-assignment\category.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +24,7 @@
             <!-- Currency Selector -->
             <div class="currency-selector">
                 <select>
-                    
                     <option>INR ₹ | India</option>
-                    
                 </select>
             </div>
     
@@ -56,8 +55,11 @@
     <section class="category-products" id="category-title">
         <div class="sidebar">
             <h3>Sort By</h3>
-            <button onclick="sortProducts('low-to-high')">Price: Low to High</button>
-            <button onclick="sortProducts('high-to-low')">Price: High to Low</button>
+            <select id="sortDropdown" onchange="sortProducts(this.value)">
+                <option value="default">Default</option>
+                <option value="low-to-high">Price: Low to High</option>
+                <option value="high-to-low">Price: High to Low</option>
+            </select>
         </div>
         <div class="product-grid" id="productGrid"></div>
     </section>
@@ -67,11 +69,6 @@
         <p>&copy; 2025 Porfyro Boutique. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js">
-        
-    console.log("Script.js is loaded");
-</script>
-
-    
+    <script src="script.js"></script>
 </body>
 </html>
