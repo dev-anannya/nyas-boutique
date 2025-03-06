@@ -33,14 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                         <div class="product-info">
                             <h3>${product.name}</h3>
-                            <p>Category: ${product.category}</p>
+                          <!--  <p>Category: ${product.category}</p> --!>
                             <select class="variety-select" onchange="updatePrice(this)">
                                 ${product.varieties.map(variety => 
                                     `<option value="${variety.id}" data-price="${variety.price}">${variety.name} - ₹${variety.price}</option>`
                                 ).join("")}
                             </select>
                             <p class="price">Price: ₹${product.varieties[0].price}</p>
-                            <button onclick="addToCart('${product.id}', '${product.name}', this)">Add to Cart</button>
+                            <button class="add-cart" onclick="addToCart('${product.id}', '${product.name}', this)">Add to Cart</button>
                         </div>
                     `;
                     productGrid.appendChild(productCard);

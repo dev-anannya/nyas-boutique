@@ -49,6 +49,27 @@
     border-radius: 8px;
 }
 
+
+.navbar-right ul li {
+    display: inline-block;
+}
+
+.navbar-right ul li a {
+    color: #5a3e36; /* Deep warm brown */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 22px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-right ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
 /* 🌷 Banner Enhancements */
 .banner {
     position: relative;
@@ -330,6 +351,7 @@
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s ease;
+    border-color: #5a3e36;
 }
 
 .product-card:hover {
@@ -338,12 +360,16 @@
 
 .product-card img {
     width: 100%;
-    height: auto;
+    height: 250px;
 }
 
 .product-name {
+    margin: 15px;
+    padding: 10px;
     font-size: 1.1rem;
     margin: 10px 0;
+    color: #5a3e36;
+    font-family: 'Playfair Display', serif;
 }
 
 .product-price {
@@ -364,6 +390,29 @@
 
 .product-link:hover {
     background-color: #8b5e3b;
+}
+
+.variety-select {
+    background-color: white;
+    border: 1px solid #5a3e36;
+    color: #5a3e36;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: 'Playfair Display', serif;
+    margin: 10px;
+}
+
+.product-info{
+    color:#48322c;
+}
+.add-cart{
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #5a3e36;
+    color: #5a3e36;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: 'Playfair Display', serif;
 }
 
 /* 📌 Footer */

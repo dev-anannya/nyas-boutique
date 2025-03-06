@@ -30,7 +30,7 @@ $products = [
         "id" => 3,
         "name" => "Gold-Plated Pearl Choker",
         "category" => "Jewelry",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/jewlery.jpg",
         "varieties" => [
             ["id" => 301, "name" => "Gold-Plated", "price" => 3500],
             ["id" => 302, "name" => "Pearl", "price" => 4200],
@@ -41,7 +41,7 @@ $products = [
         "id" => 4,
         "name" => "Rose Gold Tiara",
         "category" => "Jewelry",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/dresses.jpg",
         "varieties" => [
             ["id" => 401, "name" => "Silver", "price" => 3000],
             ["id" => 402, "name" => "Rose Gold", "price" => 3800],
