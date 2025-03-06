@@ -7,7 +7,7 @@ $products = [
         "id" => 1,
         "name" => "Silk Hair Bow",
         "category" => "Accessories",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/silkbow.jpg",
         "varieties" => [
             ["id" => 101, "name" => "Satin", "price" => 800],
             ["id" => 102, "name" => "Velvet", "price" => 1200],
@@ -18,7 +18,7 @@ $products = [
         "id" => 2,
         "name" => "Pearl-Embroidered Gloves",
         "category" => "Accessories",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/gloves.jpg",
         "varieties" => [
             ["id" => 201, "name" => "Lace", "price" => 1500],
             ["id" => 202, "name" => "Silk", "price" => 2000],
@@ -28,9 +28,9 @@ $products = [
     // Jewelry
     [
         "id" => 3,
-        "name" => "Gold-Plated Pearl Choker",
+        "name" => "Pearl Choker",
         "category" => "Jewelry",
-        "image_url" => "./images/jewlery.jpg",
+        "image_url" => "./images/pearlchoker.jpg",
         "varieties" => [
             ["id" => 301, "name" => "Gold-Plated", "price" => 3500],
             ["id" => 302, "name" => "Pearl", "price" => 4200],
@@ -39,9 +39,9 @@ $products = [
     ],
     [
         "id" => 4,
-        "name" => "Rose Gold Tiara",
+        "name" => "Tiara",
         "category" => "Jewelry",
-        "image_url" => "./images/dresses.jpg",
+        "image_url" => "./images/tiara.jpg",
         "varieties" => [
             ["id" => 401, "name" => "Silver", "price" => 3000],
             ["id" => 402, "name" => "Rose Gold", "price" => 3800],
@@ -53,7 +53,7 @@ $products = [
         "id" => 5,
         "name" => "Regency Ball Gown",
         "category" => "Dresses",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/dress1.jpg",
         "varieties" => [
             ["id" => 501, "name" => "Satin", "price" => 2800],
             ["id" => 502, "name" => "Silk", "price" => 3500],
@@ -64,7 +64,7 @@ $products = [
         "id" => 6,
         "name" => "Empire Waist Maxi Dress",
         "category" => "Dresses",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/dress2.jpg",
         "varieties" => [
             ["id" => 601, "name" => "Chiffon", "price" => 2000],
             ["id" => 602, "name" => "Silk", "price" => 3000],
@@ -76,7 +76,7 @@ $products = [
         "id" => 7,
         "name" => "Victorian Lace Blouse",
         "category" => "Tops",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/top1.jpg",
         "varieties" => [
             ["id" => 701, "name" => "Cotton", "price" => 1200],
             ["id" => 702, "name" => "Lace", "price" => 1800],
@@ -86,9 +86,9 @@ $products = [
     // Skirts
     [
         "id" => 8,
-        "name" => "Floral Organza Skirt",
+        "name" => "Floral Skirt",
         "category" => "Skirts",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/organzaskirt.jpg",
         "varieties" => [
             ["id" => 801, "name" => "Tulle", "price" => 2200],
             ["id" => 802, "name" => "Organza", "price" => 2800],
@@ -100,7 +100,7 @@ $products = [
         "id" => 9,
         "name" => "Embroidered Beaded Handbag",
         "category" => "Bags",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/bag1.jpg",
         "varieties" => [
             ["id" => 901, "name" => "Faux Leather", "price" => 1800],
             ["id" => 902, "name" => "Velvet", "price" => 2500],
@@ -111,7 +111,7 @@ $products = [
         "id" => 10,
         "name" => "Pearl Mini Purse",
         "category" => "Bags",
-        "image_url" => "https://via.placeholder.com/150",
+        "image_url" => "./images/bag2.jpg",
         "varieties" => [
             ["id" => 1001, "name" => "Velvet", "price" => 2800],
             ["id" => 1002, "name" => "Pearl Beaded", "price" => 3800],
