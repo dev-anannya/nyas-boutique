@@ -147,10 +147,10 @@ function addToCart(productId, productName, buttonElement) {
 
 function updateCartDisplay(cart) {
     const cartContainer = document.getElementById('cartContainer');
-    cartContainer.innerHTML = '';
+    cartContainer.innerHTML = '<h2>Your Cart</h2>';
 
     if (cart.length === 0) {
-        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        cartContainer.innerHTML += '<p>Your cart is empty.</p>';
         return;
     }
 
@@ -158,9 +158,12 @@ function updateCartDisplay(cart) {
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart-item');
         cartItem.innerHTML = `
-            <p>${item.productName} (${item.varietyName}) - ₹${item.price} x ${item.quantity}</p>
-            <button onclick="changeQuantity('${item.productId}', '${item.varietyId}', -1)">-</button>
-            <button onclick="changeQuantity('${item.productId}', '${item.varietyId}', 1)">+</button>
+            <p>${item.productName} (${item.varietyName}) - ₹${item.price}</p>
+            <div class="quantity-controls">
+                <button onclick="changeQuantity('${item.productId}', '${item.varietyId}', -1)">-</button>
+                <span>${item.quantity}</span>
+                <button onclick="changeQuantity('${item.productId}', '${item.varietyId}', 1)">+</button>
+            </div>
         `;
         cartContainer.appendChild(cartItem);
     });
@@ -171,6 +174,7 @@ function updateCartDisplay(cart) {
     cartContainer.appendChild(totalDisplay);
 
     const checkoutButton = document.createElement('button');
+    checkoutButton.classList.add('checkout-btn');
     checkoutButton.innerHTML = 'Checkout';
     checkoutButton.onclick = () => alert(`Total amount: ₹${total}`);
     cartContainer.appendChild(checkoutButton);

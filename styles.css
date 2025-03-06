@@ -528,14 +528,54 @@ body.login-signup {
     text-decoration: underline;
 }
 
+/* Background Image for Cart Page */
+body.cart-page {
+    background: url('images/indexbanner.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/* Background Image for Cart Page */
+body.cart-page {
+    background: url('images/indexbanner.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+/* Background Image for Cart Page */
+body.cart-page {
+    background: url('images/indexbanner.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
 /* Cart Container */
 .cart-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 50px auto;
     padding: 20px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cart-container h2 {
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+    color: #5a3e36;
 }
 
 .cart-item {
@@ -544,13 +584,21 @@ body.login-signup {
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
+    gap: 10px;
 }
 
 .cart-item p {
     margin: 0;
+    flex: 1;
 }
 
-.cart-item button {
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-controls button {
     background: #5a3e36;
     color: white;
     border: none;
@@ -561,6 +609,24 @@ body.login-signup {
     transition: 0.3s;
 }
 
-.cart-item button:hover {
+.quantity-controls button:hover {
+    background: #8b5e3b;
+}
+
+/* Checkout Button */
+.checkout-btn {
+    width: 100%;
+    background: #5a3e36;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.checkout-btn:hover {
     background: #8b5e3b;
 }

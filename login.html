@@ -9,6 +9,7 @@
 
 </head>
 <body class="login-signup">
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <ul>
             <li><a href="index.html#name">botique name</a></li>
@@ -18,7 +19,23 @@
             <li><a href="#">contact</a></li>
         </ul>
        
-
+        <div class="navbar-right">
+            <!-- Currency Selector -->
+            <div class="currency-selector">
+                <select>
+                    <option>USD $ | United States</option>
+                    <option>INR ₹ | India</option>
+                    <option>EUR € | Europe</option>
+                    <option>GBP £ | United Kingdom</option>
+                </select>
+            </div>
+    
+            <!-- Search & Cart Icons -->
+            <div class="nav-icons">
+                <i class="fas fa-search" onclick="toggleSearchBar()"></i>  <!-- Search Icon -->
+                <a href="./cart.html"><i class="fas fa-shopping-bag"></i></a>  <!-- Shopping Bag Icon -->
+                <a href="./login.html"><i class="fas fa-user"></i></a>   <!-- User Icon -->
+            </div>
         </div>  
     </nav>
 
