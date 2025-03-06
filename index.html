@@ -6,18 +6,18 @@
     <title>Porfyro Boutique</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 </head>
 <body>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
         <ul>
-            <li><a href="#banner">Home</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#categories">Collections</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#name">botique name</a></li>
+            <li><a href="#banner">home</a></li>
+            <!-- <li><a href="#">Shop</a></li> -->
+            <li><a href="#collections">collections</a></li>
+            <li><a href="#">about</a></li>
+            <li><a href="#">contact</a></li>
         </ul>
        
         <div class="navbar-right">
@@ -33,17 +33,19 @@
     
             <!-- Search & Cart Icons -->
             <div class="nav-icons">
-                <i class="fas fa-search"></i>  <!-- Search Icon -->
+                <i class="fas fa-search" onclick="toggleSearchBar()"></i>  <!-- Search Icon -->
                 <i class="fas fa-shopping-bag"></i>  <!-- Shopping Bag Icon -->
             </div>
-
-            <div class="search-box" id="search-box">
-                <input type="text" placeholder="Search..." id="search-input">
-                <button id="search-btn">Search</button>
-            </div>
+        </div>  
     </nav>
-    
 
+    <!-- Search Bar -->
+    <div id="searchBar" class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search" oninput="liveSearch()">
+        <i class="fas fa-search"></i>
+        <button class="close-btn" onclick="toggleSearchBar()">×</button>
+    </div>
+    
     <!-- Regencycore Banner with Store Name -->
     <section class="banner" id="banner">
         <img src="./images/indexbanner.jpg" alt="Fashion Banner">
@@ -52,55 +54,37 @@
     </section>
 
     <!-- 🌿 Categories Collection Grid -->
-<section class="categories" id="categories">
-    <div class="category-item">
-        <img src="./images/accessories.jpg" alt="Accessories">
-        <div class="category-title">Accessories</div>
-    </div>
-    <div class="category-item">
-        <img src="./images/jewlery.jpg" alt="Jewelry">
-        <div class="category-title">Jewelry</div>
-    </div>
-    <div class="category-item">
-        <img src="./images/dresses.jpg" alt="Dresses">
-        <div class="category-title">Dresses</div>
-    </div>
-    <div class="category-item">
-        <img src="images/tops.jpg" alt="Tops">
-        <div class="category-title">Tops</div>
-    </div>
-    <div class="category-item">
-        <img src="./images/skirts.jpg" alt="Skirts">
-        <div class="category-title">Skirts</div>
-    </div>
-    <div class="category-item">
-        <img src="./images/bags.jpg" alt="Bags">
-        <div class="category-title">Bags</div>
-    </div>
-</section>
-
+    <section class="categories" id="collections">
+        <div class="category-item"><a href="categories.html">
+            <img src="./images/accessories.jpg" alt="Accessories">
+            <div class="category-title">Accessories</div>
+        </div></a>
+        <div class="category-item">
+            <img src="./images/jewlery.jpg" alt="Jewelry">
+            <div class="category-title">Jewelry</div>
+        </div>
+        <div class="category-item">
+            <img src="./images/dresses.jpg" alt="Dresses">
+            <div class="category-title">Dresses</div>
+        </div>
+        <div class="category-item">
+            <img src="images/tops.jpg" alt="Tops">
+            <div class="category-title">Tops</div>
+        </div>
+        <div class="category-item">
+            <img src="./images/skirts.jpg" alt="Skirts">
+            <div class="category-title">Skirts</div>
+        </div>
+        <div class="category-item">
+            <img src="./images/bags.jpg" alt="Bags">
+            <div class="category-title">Bags</div>
+        </div>
+    </section>
 
     <!-- 🌟 Best Seller Carousel -->
-<section class="best-seller">
-    <h2>Best Sellers</h2>
-    <div class="carousel-container">
-        <div class="carousel-track">
-            <div class="carousel-item">
-                <img src="images/bestseller1.jpg" alt="Best Seller 1">
-                <p>Elegant Pearl Necklace</p>
-            </div>
-            <div class="carousel-item">
-                <img src="images/bestseller2.jpg" alt="Best Seller 2">
-                <p>Regency Satin Gown</p>
-            </div>
-            <div class="carousel-item">
-                <img src="images/bestseller3.jpg" alt="Best Seller 3">
-                <p>Floral Embroidered Corset</p>
-            </div>
-            <div class="carousel-item">
-                <img src="images/bestseller4.jpg" alt="Best Seller 4">
-                <p>Crystal-Embellished Tiara</p>
-            </div>
+    <section class="best-seller">
+        <h2>Best Sellers</h2>
+        <div class="carousel-container">
             <div class="carousel-track">
                 <div class="carousel-item">
                     <img src="images/bestseller1.jpg" alt="Best Seller 1">
@@ -118,17 +102,17 @@
                     <img src="images/bestseller4.jpg" alt="Best Seller 4">
                     <p>Crystal-Embellished Tiara</p>
                 </div>
+            </div>
+            <button class="carousel-btn prev">&#10094;</button>
+            <button class="carousel-btn next">&#10095;</button>
         </div>
-        <button class="carousel-btn prev">&#10094;</button>
-        <button class="carousel-btn next">&#10095;</button>
-    </div>
-</section>
-
+    </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Porfyro Boutique. All Rights Reserved.</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>

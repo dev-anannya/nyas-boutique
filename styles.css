@@ -10,7 +10,8 @@
     position: absolute; /* Overlays on banner */
     top: 0;
     width: 100%;
-    background: rgba(213, 202, 170, 0.3); /* Soft beige with transparency */
+    background: rgb(253, 253, 253);
+    /* background: rgba(213, 202, 170, 0.3); Soft beige with transparency */
     padding: 15px 30px;
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
@@ -52,7 +53,7 @@
 .banner {
     position: relative;
     width: 100%;
-    height: 100vh; /* Full viewport height */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,32 +131,68 @@
     color: #8b5e3b;
 }
 
-/* Search Box Styling */
-.search-box {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: 80px; /* Below navbar */
-    right: 30px;
+/* Search Bar Styling */
+.search-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    margin: 0 auto;
+    right: 0;
     background: white;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 10px 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-100%);
 }
 
-.search-box input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 200px;
+.search-bar.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(0);
 }
 
-.search-box button {
-    padding: 8px 12px;
-    background: #8b5e3b;
-    color: white;
+.search-bar input {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid #5a3e36;
+    border-radius: 5px;
+}
+
+.search-bar .fa-search {
+    margin-left: 10px;
+    font-size: 20px;
+    color: #5a3e36;
+}
+
+.search-bar .close-btn {
+    background: none;
     border: none;
+    font-size: 24px;
+    margin-left: 10px;
     cursor: pointer;
-    border-radius: 4px;
+    color: #5a3e36;
+}
+
+/* Dimmed Overlay */
+.dimmed-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.dimmed-overlay.active {
+    display: block;
 }
 
 /* 🌿 Categories Collection Grid */
@@ -284,6 +321,52 @@
 .next {
     right: 10px;
 }
+
+/* Product Card Styles */
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 1rem;
+    color: #888;
+}
+
+.product-link {
+    display: inline-block;
+    margin: 10px 0 20px;
+    padding: 10px 20px;
+    background-color: #5a3e36;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.product-link:hover {
+    background-color: #8b5e3b;
+}
+
+
 /* 📌 Footer */
 footer {
     background: #5a3e36;
@@ -291,4 +374,4 @@ footer {
     text-align: center;
     padding: 10px 0;
     margin-top: 50px;
-}
+}   

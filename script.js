@@ -108,25 +108,89 @@ function loadCartFromLocalStorage() {
 }
 
 // Search Functionality
-function setupSearch() {
-    document.getElementById("search-btn").addEventListener("click", function () {
-        let searchTerm = document.getElementById("search-input").value.toLowerCase();
-        let filteredProducts = products.filter(p => p.name.toLowerCase().includes(searchTerm));
-        displayProducts(filteredProducts);
+function toggleSearchBar() {
+    const searchBar = document.getElementById('searchBar');
+    const overlay = document.createElement('div');
+    overlay.className = 'dimmed-overlay';
+    document.body.appendChild(overlay);
+
+    if (searchBar.classList.contains('active')) {
+        searchBar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.removeChild(overlay);
+    } else {
+        searchBar.classList.add('active');
+        overlay.classList.add('active');
+    }
+
+    overlay.addEventListener('click', function () {
+        searchBar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.removeChild(overlay);
     });
 }
 
-// Checkout Function
-function checkout() {
-    if (cart.length === 0) {
-        alert("Your cart is empty.");
+function liveSearch() {
+    const query = document.getElementById('searchInput').value.trim();
+    const resultsContainer = document.getElementById('searchResults');
+
+    if (query.length === 0) {
+        resultsContainer.innerHTML = '';
         return;
     }
 
-    let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    alert(`Total amount: ₹${total}\nThank you for shopping!`);
-
-    cart = [];
-    saveCartToLocalStorage();
-    updateCart();
+    fetch(`api/search.php?q=${encodeURIComponent(query)}`)
+        .then(response => response.text())
+        .then(data => {
+            resultsContainer.innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error fetching search results:', error);
+        });
 }
+
+// scripts.js
+
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category') || 'default';  // Default category if none provided
+
+    // Fetch products based on the category
+    loadCategoryProducts(category);
+
+    function loadCategoryProducts(category) {
+        // This is a simulated list of products for different categories
+        const products = {
+            'Accessories': [
+                { name: 'Sunglasses', price: '$50', image: 'sunglasses.jpg', link: 'product-detail.html?id=1' },
+                { name: 'Handbag', price: '$150', image: 'handbag.jpg', link: 'product-detail.html?id=2' },
+                // Add more products...
+            ],
+            'Clothing': [
+                { name: 'T-shirt', price: '$30', image: 'tshirt.jpg', link: 'product-detail.html?id=3' },
+                { name: 'Jeans', price: '$70', image: 'jeans.jpg', link: 'product-detail.html?id=4' },
+                // Add more products...
+            ],
+            // Add other categories...
+        };
+
+        const categoryProducts = products[category] || [];  // Default to empty array if category not found
+
+        const productGrid = document.querySelector('.product-grid');
+        productGrid.innerHTML = '';  // Clear any existing products
+
+        categoryProducts.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.classList.add('product-card');
+
+            productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-price">${product.price}</p>
+                <a href="${product.link}" class="product-link">View Details</a>
+            `;
+            
+            productGrid.appendChild(productCard);
+        });
+    }
+});
