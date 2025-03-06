@@ -120,5 +120,19 @@ $products = [
     ]
 ];
 
-echo json_encode($products);
+$category = isset($_GET['category']) ? trim($_GET['category']) : '';
+
+if (!empty($category)) {
+    $filteredProducts = array_filter($products, function ($product) use ($category) {
+        return strtolower($product['category']) === strtolower($category);
+    });
+
+    // Re-index array after filtering
+    $filteredProducts = array_values($filteredProducts);
+    
+    echo json_encode($filteredProducts);
+} else {
+    // If no category is provided, return all products
+    echo json_encode($products);
+}
 ?>
