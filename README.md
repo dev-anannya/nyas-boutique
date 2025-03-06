@@ -30,6 +30,27 @@
    http://localhost:8000/index.html
    ```
 
+## Database Setup:
+1. Install MySQL and start the MySQL server.
+2. Create a new database named `porfyro_assignment`:
+   ```sql
+   CREATE DATABASE porfyro_assignment;
+   ```
+3. Create a `users` table for user authentication:
+   ```sql
+   USE porfyro_assignment;
+   CREATE TABLE users (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       name VARCHAR(255) NOT NULL,
+       email VARCHAR(255) NOT NULL UNIQUE,
+       password VARCHAR(255) NOT NULL
+   );
+   ```
+4. (Optional) Insert sample data into the `users` table:
+   ```sql
+   INSERT INTO users (name, email, password) VALUES ('testuser', 'test@example.com', 'testpassword');
+   ```
+
 ## API Endpoints:
 - `api/db.php`: Database connection setup.
 - `api/login.php`: User login endpoint.
