@@ -415,6 +415,11 @@
     font-family: 'Playfair Display', serif;
 }
 
+.add-cart:hover{
+    background-color: #5a3e36;
+    color: white;
+}
+
 /* 📌 Footer */
 footer {
     background: #5a3e36;

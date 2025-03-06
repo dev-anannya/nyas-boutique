@@ -12,11 +12,11 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <ul>
-            <li><a href="index.html#name">botique name</a></li>
+            <li><a href="index.html#banner">nya's</a></li>
             <li><a href="index.html#banner">home</a></li>
             <li><a href="index.html#collections">collections</a></li>
-            <li><a href="#">about</a></li>
-            <li><a href="#">contact</a></li>
+            <!-- <li><a href="#">about</a></li>
+            <li><a href="#">contact</a></li> -->
         </ul>
        
         <div class="navbar-right">
@@ -50,7 +50,7 @@
     <section class="banner" id="banner">
         <img src="./images/indexbanner.jpg" alt="Fashion Banner">
         <div class="overlay"></div>  
-        <h1 class="store-name">Porfyro Boutique</h1>
+        <h1 class="store-name">nya's</h1>
     </section>
 
     <!-- Category Products -->
