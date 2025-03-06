@@ -115,3 +115,79 @@ function toggleSearchBar() {
         document.body.removeChild(overlay);
     });
 }
+
+// Cart functions
+function loadCartFromLocalStorage() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCartDisplay(cart);
+}
+
+function saveCartToLocalStorage(cart) {
+    localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function addToCart(productId, productName, buttonElement) {
+    const varietySelect = buttonElement.closest('.product-info').querySelector('.variety-select');
+    const varietyId = varietySelect.value;
+    const varietyName = varietySelect.selectedOptions[0].text;
+    const price = parseFloat(varietySelect.selectedOptions[0].dataset.price);
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingItem = cart.find(item => item.productId === productId && item.varietyId === varietyId);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ productId, productName, varietyId, varietyName, price, quantity: 1 });
+    }
+
+    saveCartToLocalStorage(cart);
+    updateCartDisplay(cart);
+}
+
+function updateCartDisplay(cart) {
+    const cartContainer = document.getElementById('cartContainer');
+    cartContainer.innerHTML = '';
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+    }
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <p>${item.productName} (${item.varietyName}) - ₹${item.price} x ${item.quantity}</p>
+            <button onclick="changeQuantity('${item.productId}', '${item.varietyId}', -1)">-</button>
+            <button onclick="changeQuantity('${item.productId}', '${item.varietyId}', 1)">+</button>
+        `;
+        cartContainer.appendChild(cartItem);
+    });
+
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const totalDisplay = document.createElement('p');
+    totalDisplay.innerHTML = `Total: ₹${total}`;
+    cartContainer.appendChild(totalDisplay);
+
+    const checkoutButton = document.createElement('button');
+    checkoutButton.innerHTML = 'Checkout';
+    checkoutButton.onclick = () => alert(`Total amount: ₹${total}`);
+    cartContainer.appendChild(checkoutButton);
+}
+
+function changeQuantity(productId, varietyId, change) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const item = cart.find(item => item.productId === productId && item.varietyId === varietyId);
+
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            const index = cart.indexOf(item);
+            cart.splice(index, 1);
+        }
+    }
+
+    saveCartToLocalStorage(cart);
+    updateCartDisplay(cart);
+}
