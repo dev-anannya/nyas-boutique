@@ -1,60 +1,28 @@
-            document.addEventListener("DOMContentLoaded", function () {
-                // loadCartFromLocalStorage();
-                // setupSearch();
+document.addEventListener("DOMContentLoaded", function () {
+    const productGrid = document.getElementById("productGrid");
 
-                const urlParams = new URLSearchParams(window.location.search);
-                const category = urlParams.get("category") || "all";
+    function fetchProducts(category = "") {
+        let url = "products.php";
+        if (category) {
+            url += `?category=${encodeURIComponent(category)}`;
+        }
 
-                fetchProducts(category);
-            });
-
-            // async function fetchProducts(category) {
-            //     try {
-            //         const response = await fetch("products.php");
-            //         if (!response.ok) throw new Error("Failed to fetch products");
-
-            //         const products = await response.json();
-            //         const filteredProducts = filterProductsByCategory(products, category);
-            //         displayProducts(filteredProducts);
-            //         document.getElementById("category-title").innerText = category;
-            //     } catch (error) {
-            //         console.error("Error fetching products:", error);
-            //         document.getElementById("productGrid").innerHTML = `<p class="error">Failed to load products. Try again later.</p>`;
-            //     }
-            // }
-
-            async function fetchProducts(category) {
-                try {
-                    console.log("Fetching products from products.php...");
-                    
-                    const response = await fetch("products.php");
-                    console.log("Response status:", response.status);
-            
-                    if (!response.ok) throw new Error("Failed to fetch products");
-            
-                    const products = await response.json();
-                    console.log("Products fetched:", products); // Debugging
-            
-                    const filteredProducts = filterProductsByCategory(products, category);
-                    displayProducts(filteredProducts);
-                    document.getElementById("category-title").innerText = category;
-                } catch (error) {
-                    console.error("Error fetching products:", error);
-                    document.getElementById("productGrid").innerHTML = `<p class="error">Failed to load products. Try again later.</p>`;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-            }
-            
+                return response.json();
+            })
+            .then(products => {
+                console.log("Fetched products:", products); // Debugging
 
-            function filterProductsByCategory(products, category) {
-                if (category === "all") {
-                    return products;
+                productGrid.innerHTML = ""; 
+
+                if (!Array.isArray(products) || products.length === 0) {
+                    productGrid.innerHTML = "<p>No products found.</p>";
+                    return;
                 }
-                return products.filter(product => product.category === category);
-            }
-
-            function displayProducts(products) {
-                const productGrid = document.getElementById("productGrid");
-                productGrid.innerHTML = "";
 
                 products.forEach(product => {
                     const productCard = document.createElement("div");
@@ -67,7 +35,9 @@
                             <h3>${product.name}</h3>
                             <p>Category: ${product.category}</p>
                             <select class="variety-select" onchange="updatePrice(this)">
-                                ${product.varieties.map(v => `<option value="${v.id}" data-price="${v.price}">${v.name} - ₹${v.price}</option>`).join("")}
+                                ${product.varieties.map(variety => 
+                                    `<option value="${variety.id}" data-price="${variety.price}">${variety.name} - ₹${variety.price}</option>`
+                                ).join("")}
                             </select>
                             <p class="price">Price: ₹${product.varieties[0].price}</p>
                             <button onclick="addToCart('${product.id}', '${product.name}', this)">Add to Cart</button>
@@ -75,66 +45,73 @@
                     `;
                     productGrid.appendChild(productCard);
                 });
-            }
+            })
+            .catch(error => console.error("Error fetching products:", error));
+    }
 
-            function updatePrice(selectElement) {
-                const selectedOption = selectElement.selectedOptions[0];
-                const priceText = selectElement.closest(".product-card").querySelector(".price");
-                priceText.textContent = `Price: ₹${selectedOption.dataset.price}`;
-            }
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get("category") || "all";
+    fetchProducts(category);
+});
 
-            function sortProducts(order) {
-                let products = [...document.querySelectorAll(".product-card")];
+function updatePrice(selectElement) {
+    const selectedOption = selectElement.selectedOptions[0];
+    const priceText = selectElement.closest(".product-card").querySelector(".price");
+    priceText.textContent = `Price: ₹${selectedOption.dataset.price}`;
+}
 
-                products.sort((a, b) => {
-                    let priceA = parseFloat(a.querySelector(".variety-select").selectedOptions[0].dataset.price);
-                    let priceB = parseFloat(b.querySelector(".variety-select").selectedOptions[0].dataset.price);
+function sortProducts(order) {
+    let products = [...document.querySelectorAll(".product-card")];
 
-                    return order === "low-to-high" ? priceA - priceB : priceB - priceA;
-                });
+    products.sort((a, b) => {
+        let priceA = parseFloat(a.querySelector(".variety-select").selectedOptions[0].dataset.price);
+        let priceB = parseFloat(b.querySelector(".variety-select").selectedOptions[0].dataset.price);
 
-                const productGrid = document.getElementById("productGrid");
-                productGrid.innerHTML = "";
-                products.forEach(product => productGrid.appendChild(product));
-            }
+        return order === "low-to-high" ? priceA - priceB : priceB - priceA;
+    });
 
-            function liveSearch() {
-                const query = document.getElementById("searchInput").value.trim();
-                const resultsContainer = document.getElementById("searchResults");
+    const productGrid = document.getElementById("productGrid");
+    productGrid.innerHTML = "";
+    products.forEach(product => productGrid.appendChild(product));
+}
 
-                if (query.length === 0) {
-                    resultsContainer.innerHTML = "";
-                    return;
-                }
+function liveSearch() {
+    const query = document.getElementById("searchInput").value.trim();
+    const resultsContainer = document.getElementById("searchResults");
 
-                fetch(`api/search.php?q=${encodeURIComponent(query)}`)
-                    .then(response => response.text())
-                    .then(data => {
-                        resultsContainer.innerHTML = data;
-                    })
-                    .catch(error => {
-                        console.error("Error fetching search results:", error);
-                    });
-            }
+    if (query.length === 0) {
+        resultsContainer.innerHTML = "";
+        return;
+    }
 
-            function toggleSearchBar() {
-                const searchBar = document.getElementById('searchBar');
-                const overlay = document.createElement('div');
-                overlay.className = 'dimmed-overlay';
-                document.body.appendChild(overlay);
+    fetch(`api/search.php?q=${encodeURIComponent(query)}`)
+        .then(response => response.text())
+        .then(data => {
+            resultsContainer.innerHTML = data;
+        })
+        .catch(error => {
+            console.error("Error fetching search results:", error);
+        });
+}
 
-                if (searchBar.classList.contains('active')) {
-                    searchBar.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.removeChild(overlay);
-                } else {
-                    searchBar.classList.add('active');
-                    overlay.classList.add('active');
-                }
+function toggleSearchBar() {
+    const searchBar = document.getElementById('searchBar');
+    const overlay = document.createElement('div');
+    overlay.className = 'dimmed-overlay';
+    document.body.appendChild(overlay);
 
-                overlay.addEventListener('click', function () {
-                    searchBar.classList.remove('active');
-                    overlay.classList.remove('active');
-                    document.body.removeChild(overlay);
-                });
-            }
+    if (searchBar.classList.contains('active')) {
+        searchBar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.removeChild(overlay);
+    } else {
+        searchBar.classList.add('active');
+        overlay.classList.add('active');
+    }
+
+    overlay.addEventListener('click', function () {
+        searchBar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.removeChild(overlay);
+    });
+}
