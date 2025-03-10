@@ -37,7 +37,8 @@ session_start();
                 <i class="fas fa-search" onclick="toggleSearchBar()"></i>  <!-- Search Icon -->
                 <a href="./cart.html"><i class="fas fa-shopping-bag"></i></a> <!-- Shopping Bag Icon -->
                 <?php if (isset($_SESSION['username'])): ?>
-                    <span>Hello, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                    <!-- <span>Hello, <?php echo htmlspecialchars($_SESSION['username']); ?></span> -->
+                    <!-- <span>Logout</span> -->
                     <a href="./api/logout.php"><i class="fas fa-sign-out-alt"></i></a> <!-- Logout Icon -->
                 <?php else: ?>
                     <a href="./login.html"><i class="fas fa-user"></i></a> <!-- User Icon -->
@@ -54,13 +55,19 @@ session_start();
     </div>
     
     <!--Banner with Store Name -->
-    <section class="banner" id="banner">
+    <section class="banner" id="banner" style="height: <?php echo isset($_SESSION['username']) ? '50vh' : '100vh'; ?>;">
         <img src="./images/indexbanner.jpg" alt="Fashion Banner">
         <div class="overlay"></div>  
         <h1 class="store-name">nya's</h1>
     </section>
 
-    <!-- Categories Collection Grid -->
+    <?php if (isset($_SESSION['username'])): ?>
+        <div class="welcome-message" style="text-align: left; font-family: 'Playfair Display', serif; font-size: 3rem; color: #5a3e36; margin-top: 1rem; padding: 0 2rem;">
+            <p>Welcome, <?php echo htmlspecialchars($_SESSION['username']);?>!</p>
+        </div
+    <?php endif; ?> >
+
+    <!-- Categories -->
     <section class="categories" id="categories">
         <div class="category-item"><a href="category.php?category=Accessories">
             <img src="./images/accessories.jpg" alt="Accessories">
