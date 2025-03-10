@@ -1,3 +1,8 @@
+<!-- filepath: c:\Users\anannya\porfyro-assignment\index.php -->
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +25,6 @@
         </ul>
        
         <div class="navbar-right">
-                <!-- <ul>
-                    <li><a href="#login">login/signup</li></a>
-                </ul> -->
             <!-- Currency Selector -->
             <div class="currency-selector">
                 <select>
@@ -34,7 +36,12 @@
             <div class="nav-icons">
                 <i class="fas fa-search" onclick="toggleSearchBar()"></i>  <!-- Search Icon -->
                 <a href="./cart.html"><i class="fas fa-shopping-bag"></i></a> <!-- Shopping Bag Icon -->
-                <a href="./login.html"><i class="fas fa-user"></i></a>   <!-- User Icon -->
+                <?php if (isset($_SESSION['username'])): ?>
+                    <span>Hello, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                    <a href="./api/logout.php"><i class="fas fa-sign-out-alt"></i></a> <!-- Logout Icon -->
+                <?php else: ?>
+                    <a href="./login.html"><i class="fas fa-user"></i></a> <!-- User Icon -->
+                <?php endif; ?>
             </div>
         </div>  
     </nav>

@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->num_rows > 0 && password_verify($password, $hashed_password)) {
         $_SESSION['user_id'] = $id;
         $_SESSION['username'] = $username;
-        header("Location: ../index.html");
+        header("Location: ../index.php");
         exit();
     } else {
         echo "Invalid email or password.";

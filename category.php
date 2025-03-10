@@ -1,4 +1,3 @@
-<!-- filepath: c:\Users\anannya\porfyro-assignment\category.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +43,7 @@
         <button class="close-btn" onclick="toggleSearchBar()">×</button>
     </div>
 
-    <!-- Regencycore Banner with Store Name -->
+    <!-- Banner-->
     <section class="banner" id="banner">
         <img src="./images/indexbanner.jpg" alt="Fashion Banner">
         <div class="overlay"></div>  
