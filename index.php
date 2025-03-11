@@ -49,9 +49,10 @@ session_start();
 
     <!-- Search Bar -->
     <div id="searchBar" class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search" oninput="liveSearch()">
+        <input type="text" id="searchInput" placeholder="Search" onkeyup="liveSearch()">
         <i class="fas fa-search"></i>
         <button class="close-btn" onclick="toggleSearchBar()">×</button>
+        <div id="searchResults" class="search-results"></div>
     </div>
     
     <!--Banner with Store Name -->

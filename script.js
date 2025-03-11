@@ -12,17 +12,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
-                return response.json();
+                return response.json(); 
             })
             .then(products => {
                 console.log("Fetched products:", products); // Debugging
-
-                productGrid.innerHTML = ""; 
 
                 if (!Array.isArray(products) || products.length === 0) {
                     productGrid.innerHTML = "<p>No products found.</p>";
                     return;
                 }
+
+                productGrid.innerHTML = ""; // Clear previous products
 
                 products.forEach(product => {
                     const productCard = document.createElement("div");
@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                         <div class="product-info">
                             <h3>${product.name}</h3>
-                          <!--  <p>Category: ${product.category}</p> --!>
                             <select class="variety-select" onchange="updatePrice(this)">
                                 ${product.varieties.map(variety => 
                                     `<option value="${variety.id}" data-price="${variety.price}">${variety.name} - ₹${variety.price}</option>`
@@ -81,16 +80,42 @@ function liveSearch() {
 
     if (query.length === 0) {
         resultsContainer.innerHTML = "";
+        resultsContainer.style.display = "none";
         return;
     }
 
     fetch(`api/search.php?q=${encodeURIComponent(query)}`)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
-            resultsContainer.innerHTML = data;
+            console.log("Search results:", data); // Debugging
+            resultsContainer.innerHTML = "";
+            if (data.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No results found</div>';
+            } else {
+                data.forEach(product => {
+                    const resultItem = document.createElement('div');
+                    resultItem.classList.add('result-item');
+                    resultItem.innerHTML = `
+                        <img src="${product.image_url}" alt="${product.name}" style="width: 50px; height: 50px; margin-right: 10px;">
+                        <span>${product.name}</span>
+                    `;
+                    resultItem.onclick = () => {
+                        window.location.href = `product.php?id=${product.id}`;
+                    };
+                    resultsContainer.appendChild(resultItem);
+                });
+            }
+            resultsContainer.style.display = "block";
         })
         .catch(error => {
             console.error("Error fetching search results:", error);
+            resultsContainer.innerHTML = '<div class="no-results">Error fetching results</div>';
+            resultsContainer.style.display = "block";
         });
 }
 

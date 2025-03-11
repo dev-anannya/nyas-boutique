@@ -15,8 +15,6 @@
             <li><a href="index.php#banner">nya's</a></li>
             <li><a href="index.php#banner">home</a></li>
             <li><a href="index.php#collections">collections</a></li>
-            <!-- <li><a href="#">about</a></li>
-            <li><a href="#">contact</a></li> -->
         </ul>
        
         <div class="navbar-right">
@@ -41,6 +39,7 @@
         <input type="text" id="searchInput" placeholder="Search" oninput="liveSearch()">
         <i class="fas fa-search"></i>
         <button class="close-btn" onclick="toggleSearchBar()">×</button>
+        <div id="searchResults" class="search-results"></div>
     </div>
 
     <!-- Banner-->
@@ -69,5 +68,47 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchProducts();
+        });
+
+        function fetchProducts() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get("category") || "all";
+            let url = "products.php";
+            if (category) {
+                url += `?category=${encodeURIComponent(category)}`;
+            }
+
+            fetch(url)
+                .then(response => response.json())
+                .then(products => {
+                    const productGrid = document.getElementById('productGrid');
+                    productGrid.innerHTML = '';
+                    products.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.classList.add('product-card');
+                        productCard.innerHTML = `
+                            <div class="product-image">
+                                <img src="${product.image_url}" alt="${product.name}">
+                            </div>
+                            <div class="product-info">
+                                <h3>${product.name}</h3>
+                                <select class="variety-select" onchange="updatePrice(this)">
+                                    ${product.varieties.map(variety => 
+                                        `<option value="${variety.id}" data-price="${variety.price}">${variety.name} - ₹${variety.price}</option>`
+                                    ).join("")}
+                                </select>
+                                <p class="price">Price: ₹${product.varieties[0].price}</p>
+                                <button class="add-cart" onclick="addToCart('${product.id}', '${product.name}', this)">Add to Cart</button>
+                            </div>
+                        `;
+                        productGrid.appendChild(productCard);
+                    });
+                })
+                .catch(error => console.error("Error fetching products:", error));
+        }
+    </script>
 </body>
 </html>
