@@ -49,9 +49,9 @@ foreach ($results as $row) {
         ];
     }
 }
-        echo json_encode(array_values($products));
+echo json_encode(array_values($products));
 
-// Debugging: Log the final products array
+// Debugging
 error_log(json_encode(array_values($products)));
 
 ?>
