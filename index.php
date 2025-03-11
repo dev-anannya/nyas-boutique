@@ -1,4 +1,3 @@
-<!-- filepath: c:\Users\anannya\porfyro-assignment\index.php -->
 <?php
 session_start();
 ?>

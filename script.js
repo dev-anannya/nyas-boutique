@@ -1,3 +1,36 @@
+const exchangeRates = {
+    INR: 1,
+    USD: 0.013, // Example rate: 1 INR = 0.013 USD
+    GBP: 0.0097, // Example rate: 1 INR = 0.0097 GBP
+    EUR: 0.011, // Example rate: 1 INR = 0.011 EUR
+};
+
+const currencySymbols = {
+    INR: '₹',
+    USD: '$',
+    GBP: '£',
+    EUR: '€',
+};
+
+let currentCurrency = 'INR';
+
+function changeCurrency(currency) {
+    currentCurrency = currency;
+    const productPrices = document.querySelectorAll('.price');
+    productPrices.forEach(priceElement => {
+        const originalPrice = parseFloat(priceElement.dataset.originalPrice);
+        const convertedPrice = (originalPrice * exchangeRates[currency]).toFixed(2);
+        priceElement.textContent = `Price: ${currencySymbols[currency]}${convertedPrice}`;
+    });
+
+    const cartTotal = document.querySelector('.cart-total');
+    if (cartTotal) {
+        const originalTotal = parseFloat(cartTotal.dataset.originalTotal);
+        const convertedTotal = (originalTotal * exchangeRates[currency]).toFixed(2);
+        cartTotal.textContent = `Total: ${currencySymbols[currency]}${convertedTotal}`;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const productGrid = document.getElementById("productGrid");
 
@@ -22,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
-                productGrid.innerHTML = ""; // Clear previous products
+                productGrid.innerHTML = ""; // Clears previous products
 
                 products.forEach(product => {
                     const productCard = document.createElement("div");
@@ -220,3 +253,6 @@ function changeQuantity(productId, varietyId, change) {
     saveCartToLocalStorage(cart);
     updateCartDisplay(cart);
 }
+
+
+
