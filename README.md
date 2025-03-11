@@ -65,6 +65,11 @@ CREATE TABLE products (
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
 ```
+6. Paste the `INSERT` queries for the `products` table from the `products.txt` file present in the root.
+
+7. Paste the `INSERT` queries for the `product_varieties` table from the `product_varieties.txt` file present in the root.
+
+
 ## API Endpoints:
 - `api/db.php`: Database connection setup.
 - `api/login.php`: User login endpoint.

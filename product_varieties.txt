@@ -1,0 +1,51 @@
+INSERT INTO products_varieties (product_id, name, price) VALUES
+
+((SELECT id FROM products WHERE name = 'Silk Hair Bow'), 'Satin', 800.00),
+((SELECT id FROM products WHERE name = 'Silk Hair Bow'), 'Velvet', 1200.00),
+((SELECT id FROM products WHERE name = 'Silk Hair Bow'), 'Embroidered', 1500.00),
+
+((SELECT id FROM products WHERE name = 'Pearl-Embroidered Gloves'), 'Lace', 1500.00),
+((SELECT id FROM products WHERE name = 'Pearl-Embroidered Gloves'), 'Silk', 2000.00),
+((SELECT id FROM products WHERE name = 'Pearl-Embroidered Gloves'), 'Pearl Embellished', 2500.00),
+
+((SELECT id FROM products WHERE name = 'Pearl Choker'), 'Gold-Plated', 3500.00),
+((SELECT id FROM products WHERE name = 'Pearl Choker'), 'Pearl', 4200.00),
+((SELECT id FROM products WHERE name = 'Pearl Choker'), 'Crystal', 5000.00),
+
+((SELECT id FROM products WHERE name = 'Tiara'), 'Silver', 3000.00),
+((SELECT id FROM products WHERE name = 'Tiara'), 'Rose Gold', 3800.00),
+((SELECT id FROM products WHERE name = 'Tiara'), 'Swarovski Crystal', 5000.00),
+
+((SELECT id FROM products WHERE name = 'Regency Ball Gown'), 'Satin', 2800.00),
+((SELECT id FROM products WHERE name = 'Regency Ball Gown'), 'Silk', 3500.00),
+((SELECT id FROM products WHERE name = 'Regency Ball Gown'), 'Embroidered Lace', 4500.00),
+
+((SELECT id FROM products WHERE name = 'Empire Waist Maxi Dress'), 'Chiffon', 2000.00),
+((SELECT id FROM products WHERE name = 'Empire Waist Maxi Dress'), 'Silk', 3000.00),
+((SELECT id FROM products WHERE name = 'Empire Waist Maxi Dress'), 'Beaded', 4000.00),
+
+((SELECT id FROM products WHERE name = 'Victorian Lace Blouse'), 'Cotton', 1200.00),
+((SELECT id FROM products WHERE name = 'Victorian Lace Blouse'), 'Lace', 1800.00),
+((SELECT id FROM products WHERE name = 'Victorian Lace Blouse'), 'Corset', 2500.00),
+
+((SELECT id FROM products WHERE name = 'Floral Skirt'), 'Tulle', 2200.00),
+((SELECT id FROM products WHERE name = 'Floral Skirt'), 'Organza', 2800.00),
+((SELECT id FROM products WHERE name = 'Floral Skirt'), 'Silk', 3500.00),
+
+
+((SELECT id FROM products WHERE name = 'Embroidered Beaded Handbag'), 'Faux Leather', 1800.00),
+((SELECT id FROM products WHERE name = 'Embroidered Beaded Handbag'), 'Velvet', 2500.00),
+((SELECT id FROM products WHERE name = 'Embroidered Beaded Handbag'), 'Beaded', 3200.00),
+
+((SELECT id FROM products WHERE name = 'Pearl Mini Purse'), 'Velvet', 2800.00),
+((SELECT id FROM products WHERE name = 'Pearl Mini Purse'), 'Pearl Beaded', 3800.00),
+((SELECT id FROM products WHERE name = 'Pearl Mini Purse'), 'Swarovski Crystal', 5000.00),
+
+((SELECT id FROM products WHERE name = 'Crystal-Embellished Mini Purse'), 'Floral Lace', 1500.00),
+((SELECT id FROM products WHERE name = 'Crystal-Embellished Mini Purse'), 'Gold Embroidered', 2200.00),
+((SELECT id FROM products WHERE name = 'Crystal-Embellished Mini Purse'), 'Pearl Decorated', 3000.00),
+
+
+((SELECT id FROM products WHERE name = 'Embroidered Handkerchief'), 'Plain', 500.00),
+((SELECT id FROM products WHERE name = 'Embroidered Handkerchief'), 'Embroidered', 900.00),
+((SELECT id FROM products WHERE name = 'Embroidered Handkerchief'), 'Pearl Studded', 1200.00);
